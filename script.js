@@ -43,9 +43,7 @@ const searchTerm = document.querySelector('#input-search')
 
 
 
-// searchTerm.addEventListener('keyup', ()=>{
-//     console.log(searchTerm.value.toLowerCase())
-// })
+
 
 
 
