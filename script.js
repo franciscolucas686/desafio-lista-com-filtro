@@ -1,37 +1,45 @@
-const url = "https://dummyjson.com/users"
+let users = [];
 
+const usersElement = document.getElementById("user-list");
+const searchElement = document.querySelector('input-search');
 
-function getAllUsers() {
-    fetch(url)
+function renderUsers(users) {
+  usersElement.innerHTML = "";
+
+  users.forEach((user) => {
+    const element = document.createElement("div");
+    element.className = "user";
+
+    element.innerHTML = `
+      <img src="${user.image}" alt="user picture">
+        <p class="nome">${user.firstName} ${user.maidenName} ${user.lastName}</p>
+      <span>${user.email}</span>
+    `;
+
+    usersElement.appendChild(element);
+  });
+}
+
+async function getAllUsers() {
+  fetch("https://dummyjson.com/users")
     .then(response => response.json())
     .then(data => {
-
-        userList = document.querySelector("#user-list")
-        userList.innerHTML = ""
-
-        data.users.forEach((user) => {
-            const divUser = document.createElement("div")
-            divUser.className = "user"
-    
-            divUser.innerHTML = `
-            <img src = "${user.image}" alt="user picture">
-            <p class ="nome">${user.firstName} ${user.maidenName} ${user.lastName}</p>
-            <span>${user.email}</span>
-            `
-    
-            userList.appendChild(divUser)   
-        });
+      users = data.users;
+      renderUsers(data.users);
     })
     .catch((error) => {
         console.error('Erro ao obter os usuários', error)
-    })
-
-    
+    });
 }
-getAllUsers()
 
+function filterUser(term) {
+}
 
-const searchTerm = document.querySelector('#input-search')
+function sortUsers(order) {}
+
+window.addEventListener("load", () => {
+  getAllUsers();
+});
 
 
 
