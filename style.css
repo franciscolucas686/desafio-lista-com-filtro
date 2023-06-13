@@ -60,7 +60,11 @@
 
 button:hover{
     background-color: #086aa3;
+}
 
+#load{
+    margin-top: 50px;
+    font-size: 2rem;
 }
 
 #user-list{

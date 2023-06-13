@@ -1,7 +1,12 @@
 let users = [];
 
 const usersElement = document.getElementById("user-list");
-const searchElement = document.querySelector('input-search');
+const searchElement = document.querySelector('#input-search');
+
+
+
+
+
 
 function renderUsers(users) {
   usersElement.innerHTML = "";
@@ -21,25 +26,51 @@ function renderUsers(users) {
 }
 
 async function getAllUsers() {
-  fetch("https://dummyjson.com/users")
-    .then(response => response.json())
-    .then(data => {
-      users = data.users;
-      renderUsers(data.users);
-    })
-    .catch((error) => {
-        console.error('Erro ao obter os usuários', error)
-    });
-}
+    const response =  await fetch("https://dummyjson.com/users")
+    
+    const data = await response.json()
+
+    const users = data.users
+
+    renderUsers(users)
+  }
 
 function filterUser(term) {
+    
+   
+
+      
+
+        
+        
+        
+        
+        
+      
+      
+      
+  
+  
+  
+      
+  
+  
+
+  
 }
+
+    
+  
 
 function sortUsers(order) {}
 
 window.addEventListener("load", () => {
   getAllUsers();
+  filterUser()
+
 });
+
+
 
 
 
